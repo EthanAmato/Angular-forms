@@ -1,0 +1,32 @@
+<div class="form-wrapper">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input ngModel name = "email" type="email" #email = "ngModel" email required class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <small *ngIf="email.errors && email.errors['required'] && email.touched">Email required</small><br>
+            <small *ngIf="!email.valid && email.touched">Email not formatted properly</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Password</label>
+            <input ngModel name = "password" type="password" #password = "ngModel" required class="form-control" id="exampleFormControlInput2">
+            <small *ngIf="password.errors && password.errors['required'] && password.touched">Password required</small><br>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Favorite Fruit</label>
+            <select ngModel name = "fav-fruit" class="form-control" id="exampleFormControlSelect1">
+                <option>Apple</option>
+                <option>Banana</option>
+                <option>Cherry</option>
+                <option>Orange</option>
+                <option>Pear</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea ngModel name = "user-comments" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" 
+        [disabled] = "!myForm.valid"
+        class="btn btn-primary">Submit</button>
+    </form>
+</div>

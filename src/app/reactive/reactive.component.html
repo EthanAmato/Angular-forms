@@ -1,0 +1,70 @@
+<div class="form-wrapper">
+    <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input 
+                class="form-control" 
+                id="exampleFormControlInput1" 
+                placeholder="name@example.com"
+                formControlName="email"
+            >
+            <small 
+                *ngIf="!myForm.get('email')!.valid && 
+                myForm.get('email')!.errors!['required'] &&
+                myForm.get('email')!.touched
+                "
+                >Please input your email
+            </small>
+            <small 
+                *ngIf="!myForm.get('email')!.valid && 
+                myForm.get('email')!.errors!['email'] &&
+                myForm.get('email')!.touched
+                "
+                >Please format your email correctly
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="exampleFormControlInput2"
+                formControlName="password"
+            />
+            <small *ngIf="!myForm.get('password')!.valid && myForm.get('password')!.touched"></small>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Favorite Fruit</label>
+            <select 
+                class="form-control" 
+                id="exampleFormControlSelect1"
+                formControlName="fruit"
+            >
+                <option>Apple</option>
+                <option>Banana</option>
+                <option>Cherry</option>
+                <option>Orange</option>
+                <option>Pear</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea 
+                class="form-control" 
+                id="exampleFormControlTextarea1" 
+                rows="3"
+                formControlName="comments"
+            >
+            </textarea>
+        </div>
+        <button 
+        class="btn btn-primary"
+        [disabled]="!myForm.valid">Submit</button>
+        
+        
+        <button type="button"
+        class="btn btn-primary"
+        (click)="modifyFormProgramattically()"
+        >Accept</button>
+    </form>
+</div>
